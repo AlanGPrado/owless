@@ -1,0 +1,82 @@
+h3,
+p {
+  font-family: 'Asap', sans-serif;
+}
+
+h3 {
+  font-size: 20px;
+  margin-bottom: 50px;
+}
+
+h3:not(:first-of-type) {
+  margin-top: 60px;
+}
+
+.container-group {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+}
+
+.container-group-frameworks {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
+}
+
+.tool-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .tool-icon {
+    width: 60px;
+    height: 60px;
+  }
+
+  .tool-legend {
+    text-align: center;
+    font-weight: 600;
+  }
+}
+
+.job-title {
+  text-align: center;
+}
+
+.job-description {
+  list-style-type: square;
+}
+
+.cv {
+  display: grid;
+  flex-direction: column;
+  grid-template-columns: repeat(2, 1fr);
+  justify-items: center;
+  a {
+    width: fit-content;
+  }
+  mat-icon {
+    color: white;
+    padding-left: 5px;
+    padding-right: 2px;
+    font-size: 22px;
+  }
+  .button-cv {
+    background-color: #2c7a7b;
+    border: 0;
+    border-radius: 10px;
+    width: fit-content;
+    cursor: pointer;
+    p {
+      text-align: center;
+      color: white;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-right: 5px;
+      font-weight: 500;
+    }
+  }
+}

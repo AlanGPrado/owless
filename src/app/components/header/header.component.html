@@ -1,14 +1,41 @@
 <header>
   <nav>
-    <ul>
-      <div class="cont">
-        <li><strong>Alan Prado</strong></li>
-        <li>Trabajos</li>
-        <li>Experiencia</li>
+    <ul class="header-row">
+      <div class="container-header">
+        <span style="cursor: pointer; display: flex; align-items: center; width: fit-contenty;" routerLink="/home"
+          (click)="quitStyles()">
+          <img style="width: 40px;" src="../../../assets/pngegg.png" alt="">
+          <li><strong>Alan Prado</strong></li>
+        </span>
+        <li *ngFor="let item of items; let i = index" class="link" [ngClass]="{'clicked': item.isActive}"
+          (click)="toggleStyles(i)" [routerLink]="item.route">
+          {{ item.label }}
+        </li>
       </div>
-      <li>
-        <mat-icon style="cursor: pointer;" (click)="toggleIcon()" #iconVariable>{{ currentIcon }}</mat-icon>
+      <li class="theme-button">
+        <button (click)="toggleIcon(); toggleBackground()" style="cursor: pointer;" class="rotate">
+          <mat-icon #iconVariable>{{
+            currentIcon }}</mat-icon>
+        </button>
       </li>
+      <div style="margin-left: 15px;" *ngIf="mobileFlag">
+        <li class="burguer-li" style="position: relative;">
+          <button class="burguer-button" (click)="toggleMenu()">
+            <mat-icon>menu</mat-icon>
+          </button>
+          <div class="fixed-column" [hidden]="!showElement">
+            <nav>
+              <ul class="burguer-menu-elements">
+                <li id="menu-name" routerLink="/home" (click)="toggleMenu()">Home</li>
+                <hr class="hr-burguer">
+                <li id="menu-name" routerLink="/trabajos" (click)="toggleMenu()">Trabajos</li>
+                <hr class="hr-burguer">
+                <li id="menu-name" routerLink="/experiencia" (click)="toggleMenu()">Experiencia</li>
+              </ul>
+            </nav>
+          </div>
+        </li>
+      </div>
     </ul>
   </nav>
 </header>

@@ -3,11 +3,11 @@ import { Router } from '@angular/router';
 import { ShareVariableService } from 'src/app/services/share-variable.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: 'app-trabajos',
+  templateUrl: './trabajos.component.html',
+  styleUrls: ['./trabajos.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class TrabajosComponent implements OnInit {
 
   constructor(private router: Router, private shareService: ShareVariableService) { }
 

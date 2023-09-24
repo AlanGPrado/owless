@@ -6,19 +6,29 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { MatIconModule } from '@angular/material/icon';
 import { HomeComponent } from './components/home/home.component';
-
+import { TrabajosComponent } from './pages/trabajos/trabajos.component';
+import { HomepageComponent } from './pages/homepage/homepage.component';
+import { ExperienciaComponent } from './pages/experiencia/experiencia.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { ShareVariableService } from './services/share-variable.service';
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    HomeComponent
+    HomeComponent,
+    TrabajosComponent,
+    HomepageComponent,
+    ExperienciaComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MatIconModule,
   ],
-  providers: [],
+  providers: [
+    ShareVariableService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

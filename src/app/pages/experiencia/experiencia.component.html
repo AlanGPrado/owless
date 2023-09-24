@@ -1,0 +1,68 @@
+<app-header></app-header>
+<main class="presentation">
+  <div>
+    <h3>Herramientas</h3>
+    <div class="container-group">
+      <span class="tool-group" *ngFor="let tool of herramientas">
+        <img class="tool-icon" [src]="tool.iconSrc" alt="">
+        <p class="tool-legend">{{ tool.legend }}</p>
+      </span>
+    </div>
+    <h3>Frameworks</h3>
+    <div class="container-group-frameworks">
+      <span class="tool-group" *ngFor="let framework of frameworks">
+        <img class="tool-icon" [src]="framework.iconSrc" alt="">
+        <p class="tool-legend">{{ framework.legend }}</p>
+      </span>
+    </div>
+
+    <h3>Experiencia Laboral</h3>
+    <div>
+      <span>
+        <p class="job-title"><strong>Practicas Profesionales (22/06/2022 - 16/12/2022).</strong></p>
+        <ul>
+          <li class="job-description">
+            <p>Desarrollo Front-End de una app
+              hibrida de citas online (Ionic con
+              Angular).</p>
+          </li>
+          <li class="job-description">
+            <p>Desarrollo Front-End de una pagina
+              de arrendamiento de carros
+              (Angular).</p>
+          </li>
+        </ul>
+      </span>
+      <br>
+      <span>
+        <p class="job-title"><strong>Kabik / Letech (21/04/2023 - 21/07/2023).</strong></p>
+        <ul>
+          <li class="job-description">
+            <p>Desarrollo Front-End en 2 tiendas de
+              comercio electrónico (Angular).</p>
+          </li>
+          <li class="job-description">
+            <p>Desarrollo Back-End con SOAP y PDO
+              (PHP).
+            </p>
+          </li>
+        </ul>
+      </span>
+    </div>
+
+    <h3>Curriculum Vitae</h3>
+    <div class="cv">
+      <a href="assets/CV - Alan Prado ESP.pdf" download="CV - Alan Prado ESP.pdf">
+        <button class="button-cv">
+          <p><mat-icon> insert_drive_file</mat-icon>Descargar CV español</p>
+        </button>
+      </a>
+      <a href="assets/CV - Alan Prado ENG.pdf" download="CV - Alan Prado ENG.pdf">
+        <button class="button-cv">
+          <p><mat-icon> insert_drive_file</mat-icon>Descargar CV ingl&eacute;s</p>
+        </button>
+      </a>
+    </div>
+  </div>
+</main>
+<app-footer></app-footer>

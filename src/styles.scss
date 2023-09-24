@@ -1,1 +1,161 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  background-color: #f0e7db;
+  transition: background-color 0.2s ease;
+}
+
+/* Estilos modo obscuro */
+.custom-body-css {
+  background-color: #202023;
+
+  h1,
+  h2,
+  h3,
+  p,
+  li {
+    color: white !important;
+  }
+
+  header {
+    // background-color: #202023 !important;
+    backdrop-filter: blur(8px) !important;
+  }
+
+  button {
+    background-color: #FFFF99 !important;
+  }
+
+  mat-icon {
+    color: black !important;
+  }
+
+  .button-redes {
+    background-color: unset !important;
+
+    .redes,
+    mat-icon {
+      color: #81e6d9 !important;
+    }
+  }
+
+  .button-redes:hover {
+    background-color: #e6fffa1b !important;
+  }
+
+  footer {
+    color: white !important;
+  }
+
+  .button-cv {
+    background-color: #81e6d9 !important;
+
+    p {
+      color: black !important;
+    }
+  }
+
+  .clicked {
+    text-decoration: underline;
+    text-decoration-thickness: 1.3px;
+    text-underline-offset: 5px;
+    text-stroke: 0.4px white !important;
+    -webkit-text-stroke: 0.4px white !important;
+  }
+
+  .burguer-button {
+    background-color: transparent !important;
+    .mat-icon {
+      color: white !important;
+    }
+  }
+
+  #menu-name {
+    color: black !important;
+  }
+}
+
+/* Footer */
+footer {
+  display: flex;
+  justify-content: center;
+  font-family: 'Exo 2', sans-serif;
+  height: 60px;
+  align-items: center;
+}
+
+.presentation {
+  display: grid;
+  justify-content: center;
+  margin-top: 5em;
+}
+
+.burguer-button {
+  background-color: unset !important;
+  border: 1px solid black !important;
+  transition: transform 0.2s, box-shadow 0.2s !important;
+  mat-icon {
+    color: black !important;
+  }
+
+}
+
+@media screen and (max-width: 780px) {
+  .cover {
+    display: grid !important;
+  }
+
+  .container-profile-pic {
+    padding-left: 0 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .my-title {
+    text-align: center !important;
+  }
+
+  .bio-text {
+    text-align: left !important;
+  }
+
+  .parent-container {
+    grid-template-columns: unset !important;
+  }
+
+  .cv {
+    grid-template-columns: unset !important;
+    gap: 10px !important;
+  }
+
+  .link {
+    display: none !important;
+  }
+
+  .container-header {
+    margin-left: 0 !important;
+    margin-right: auto !important;
+  }
+
+  .header-row {
+    padding-left: 15px !important;
+  }
+
+  .burguer-li {
+    margin-right: 20px !important;
+  }
+
+  .theme-button {
+    margin-left: 50px !important;
+    margin-right: 0 !important;
+  }
+
+  .name {
+    text-align: unset !important;
+  }
+
+  .burguer-button:active {
+    transform: translateY(0);
+    box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.2);
+  }
+}

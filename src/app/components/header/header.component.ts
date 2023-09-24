@@ -1,56 +1,84 @@
-import { Component, ElementRef, NgZone, OnInit } from '@angular/core';
-import * as THREE from "three";
+import { Component, ElementRef, NgZone, OnInit, HostListener, Renderer2 } from '@angular/core';
+import { ShareVariableService } from 'src/app/services/share-variable.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
+
 export class HeaderComponent implements OnInit {
-  currentIcon: string = 'light_mode';
-  // private scene: THREE.Scene;
-  private camera: THREE.PerspectiveCamera;
-  // private renderer: THREE.WebGLRenderer;
+  sharedData: any;
+  customStyle: string | null = null;
+  currentIcon: string = 'dark_mode';
+  isCssApplied: boolean = false;
+  mobileFlag: boolean = false;
+  screenWidth: number = window.innerWidth;
+  items: { label: string; route: string; isActive: boolean }[] = [
+    { label: 'Trabajos', route: '/trabajos', isActive: false },
+    { label: 'Experiencia', route: '/experiencia', isActive: false }
+  ];
+  showElement = false;
+
+  toggleMenu() {
+    this.showElement = !this.showElement;
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: Event): void {
+    this.screenWidth = window.innerWidth;
+  }
+
+  toggleStyles(index: number) {
+    this.items.forEach((item, i) => {
+      item.isActive = i === index;
+    });
+  }
+
+  quitStyles() {
+    this.items.forEach(item => {
+      item.isActive = false;
+    })
+  }
 
   toggleIcon() {
-    (this.currentIcon === 'light_mode') ? this.currentIcon = 'dark_mode' : this.currentIcon = 'light_mode';
+    (this.currentIcon === 'dark_mode') ? this.currentIcon = 'light_mode' : this.currentIcon = 'dark_mode';
   }
 
-  private createScene() {
-    // this.scene = new THREE.Scene();
+  toggleBackground() {
+    this.isCssApplied = !this.isCssApplied;
+    (this.isCssApplied) ? document.body.classList.add('custom-body-css') : document.body.classList.remove('custom-body-css');
   }
 
-  private createCamera() {
-    const width = this.el.nativeElement.clientWidth;
-    const height = this.el.nativeElement.clientHeight;
-    this.camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
-    this.camera.position.z = 5;
+  constructor(private ngZone: NgZone, private el: ElementRef, private renderer: Renderer2, private shareService: ShareVariableService) { }
+
+  onDocumentClick(event: Event) {
+    if (!this.el.nativeElement.contains(event.target)) {
+      this.showElement = false;
+    }
   }
-
-  private createRenderer() {
-    // this.renderer = new THREE.WebGLRenderer();
-    // this.renderer.setSize(this.el.nativeElement.clientWidth, this.el.nativeElement.clientHeight);
-    // this.el.nativeElement.appendChild(this.renderer.domElement);
-  }
-
-  private render() {
-    // this.renderer.render(this.scene, this.camera);
-
-    // Add your Three.js scene elements and animations here
-
-    requestAnimationFrame(() => this.render());
-  }
-
-  constructor(private ngZone: NgZone, private el: ElementRef) {
-    this.camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000); // Initialize the camera here
-    this.camera.position.z = 5;
-   }
 
   ngOnInit(): void {
-    this.createScene();
-    this.createCamera();
-    this.createRenderer();
-    this.render();
+    this.sharedData = this.shareService.getSharedData();
+    console.log(this.sharedData);
+    let op: any;
+    this.items.forEach(item => {
+      if (item.route == this.sharedData) {
+        (item.route == '/trabajos') ? op = 0 : op = 1;
+        console.log('SELEVG', item.route)
+        this.toggleStyles(op);
+      }
+    })
+
+    if (this.screenWidth <= 780) {
+      this.mobileFlag = true;
+    }
+    document.addEventListener('click', this.onDocumentClick.bind(this));
+  }
+
+
+  ngOnDestroy() {
+    document.removeEventListener('click', this.onDocumentClick.bind(this));
   }
 
 }

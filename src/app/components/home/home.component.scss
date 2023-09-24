@@ -1,0 +1,76 @@
+h1,
+h2,
+p {
+  color: black;
+  font-family: 'Asap', sans-serif;
+  max-width: 740px;
+  overflow-wrap: break-word;
+  text-align: justify;
+  hyphens: auto;
+}
+
+.name {
+  font-size: 40px;
+}
+p {
+  font-family: 'Asap', sans-serif;
+}
+
+h2 {
+  margin-top: 60px;
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 7px;
+}
+
+.container-profile-pic {
+  display: grid;
+  align-items: flex-end;
+  padding-left: 100px;
+  .profile-pic {
+    width: 100px;
+    border-radius: 50%;
+    border: 2px solid white;
+  }
+}
+
+.button-redes {
+  background-color: unset;
+  border: unset;
+  display: flex;
+  align-items: center;
+  height: 35px;
+  mat-icon {
+    margin-right: 8px;
+    color: #2c7a7b;
+  }
+}
+
+.button-redes:hover {
+  background-color: #e6fffa;
+  border-radius: 8px;
+}
+
+.redes {
+  text-decoration: unset;
+  color: #2c7a7b;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.year {
+  margin-right: 20px;
+  font-weight: bolder;
+}
+
+.dates {
+  display: flex;
+  align-items: flex-start;
+}
+
+.hobbys {
+  padding-left: 16px;
+  li {
+    list-style-type: square;
+  }
+}
