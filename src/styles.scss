@@ -76,7 +76,6 @@ body {
 
   .redirect:hover {
     background-color: #e6fffa1b !important;
-    border-radius: 8px;
   }
 }
 
@@ -192,15 +191,5 @@ footer {
   #menu-name:hover, #menu-name:active {
     background-color: rgba(0, 0, 0, 0.097);
     border-radius: 5px;
-  }
-
-  .redirect:hover {
-    background-color: unset !important;
-    border-radius: unset !important;
-  }
-
-  .redirect:active {
-    background-color: #e6fffa !important;
-    border-radius: 8px !important;
   }
 }
