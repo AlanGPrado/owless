@@ -26,11 +26,17 @@
           <div class="fixed-column" [hidden]="!showElement">
             <nav>
               <ul class="burguer-menu-elements">
-                <li id="menu-name" routerLink="/home" (click)="toggleMenu()">Home</li>
+                <li id="menu-name" routerLink="/home" (click)="toggleMenu()">
+                  <mat-icon>home</mat-icon>Home
+                </li>
                 <hr class="hr-burguer">
-                <li id="menu-name" routerLink="/trabajos" (click)="toggleMenu()">Trabajos</li>
+                <li id="menu-name" routerLink="/trabajos" (click)="toggleMenu()">
+                  <mat-icon>business_center</mat-icon>Trabajos
+                </li>
                 <hr class="hr-burguer">
-                <li id="menu-name" routerLink="/experiencia" (click)="toggleMenu()">Experiencia</li>
+                <li id="menu-name" routerLink="/experiencia" (click)="toggleMenu()">
+                  <mat-icon>collections_bookmark</mat-icon>Experiencia
+                </li>
               </ul>
             </nav>
           </div>
@@ -39,4 +45,3 @@
     </ul>
   </nav>
 </header>
-

@@ -20,6 +20,10 @@ ul {
   }
 }
 
+.rotate:active {
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.4) !important;
+}
+
 .rotate:hover {
   mat-icon {
     transform: rotate(30deg);
@@ -90,10 +94,11 @@ button {
   top: 60px;
   right: 0;
   background-color: white;
-  border-radius: 3px;
+  border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   width: max-content;
-  padding: 5px 5px;
+  padding: 8px 15px;
+  padding-left: 14px;
 }
 
 .burguer-menu-elements {
@@ -105,5 +110,5 @@ button {
 }
 
 .hr-burguer {
-  width: 99%;
+  width: 100%;
 }

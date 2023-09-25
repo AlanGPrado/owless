@@ -99,6 +99,7 @@ footer {
 
 }
 
+/* MOBILE STYLES */
 @media screen and (max-width: 780px) {
   .cover {
     display: grid !important;
@@ -156,6 +157,34 @@ footer {
 
   .burguer-button:active {
     transform: translateY(0);
-    box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+  }
+
+  .rotate:hover {
+    mat-icon {
+      transform: unset !important;
+    }
+  }
+
+  .rotate:active {
+    mat-icon {
+      transform: rotate(30deg) !important;
+    }
+  }
+
+  #menu-name {
+    display: flex;
+    align-items: center;
+
+    mat-icon {
+      font-size: 23px;
+      padding-right: 3px;
+    }
   }
 }
+////////////////////
+.burguer-menu-elements li:first-child {
+  // box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  width: 100%;
+}
+///////////////////
