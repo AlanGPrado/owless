@@ -31,9 +31,8 @@ h3 {
     height: 144px;
   }
   .not-found {
-    background: rgba(0, 0, 0, 0.939);
+    background: black;
     filter: blur(1.5px);
-    border: unset !important;
 
   }
 }
@@ -43,4 +42,14 @@ h3 {
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 20px;
 
+}
+
+.redirect {
+  color: black;
+  text-underline-offset: 3px;
+}
+
+.redirect:hover {
+  background-color: #e6fffa1b;
+  border-radius: 8px;
 }

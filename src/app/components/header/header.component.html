@@ -8,7 +8,8 @@
           <li><strong>Alan Prado</strong></li>
         </span>
         <li *ngFor="let item of items; let i = index" class="link" [ngClass]="{'clicked': item.isActive}"
-          (click)="toggleStyles(i)" [routerLink]="item.route">
+          (click)="toggleStyles(i)" [routerLink]="item.route"
+          [ngStyle]="{'display': i === 0 ? 'none' : 'block'}">
           {{ item.label }}
         </li>
       </div>
@@ -26,16 +27,19 @@
           <div class="fixed-column" [hidden]="!showElement">
             <nav>
               <ul class="burguer-menu-elements">
-                <li id="menu-name" routerLink="/home" (click)="toggleMenu()">
+                <li id="menu-name" routerLink="/home" (click)="toggleMenu()"
+                  [ngClass]="{'selected-burguer': items[0].isActive}">
                   <mat-icon>home</mat-icon>Home
                 </li>
                 <hr class="hr-burguer">
-                <li id="menu-name" routerLink="/trabajos" (click)="toggleMenu()">
+                <li id="menu-name" routerLink="/trabajos" (click)="toggleMenu()"
+                  [ngClass]="{'selected-burguer': items[1].isActive}">
                   <mat-icon>business_center</mat-icon>Trabajos
                 </li>
                 <hr class="hr-burguer">
-                <li id="menu-name" routerLink="/experiencia" (click)="toggleMenu()">
-                  <mat-icon>collections_bookmark</mat-icon>Experiencia
+                <li id="menu-name" routerLink="/experiencia" (click)="toggleMenu()"
+                  [ngClass]="{'selected-burguer': items[2].isActive}">
+                  <mat-icon>menu_book</mat-icon>Experiencia
                 </li>
               </ul>
             </nav>

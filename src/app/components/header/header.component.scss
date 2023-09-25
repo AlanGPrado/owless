@@ -89,6 +89,11 @@ button {
   -webkit-text-stroke: 0.4px #000;
 }
 
+.selected-burguer {
+  background-color: rgba(0, 0, 0, 0.097);
+  border-radius: 5px;
+}
+
 .fixed-column {
   position: absolute;
   top: 60px;

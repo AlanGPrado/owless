@@ -15,9 +15,11 @@ export class HeaderComponent implements OnInit {
   mobileFlag: boolean = false;
   screenWidth: number = window.innerWidth;
   items: { label: string; route: string; isActive: boolean }[] = [
+    { label: 'Home', route: '/home', isActive: false },
     { label: 'Trabajos', route: '/trabajos', isActive: false },
     { label: 'Experiencia', route: '/experiencia', isActive: false }
   ];
+
   showElement = false;
 
   toggleMenu() {
@@ -35,6 +37,7 @@ export class HeaderComponent implements OnInit {
     });
   }
 
+  // Quita el efecto CSS selected de las otras secciones del header
   quitStyles() {
     this.items.forEach(item => {
       item.isActive = false;
@@ -47,7 +50,7 @@ export class HeaderComponent implements OnInit {
 
   toggleBackground() {
     this.isCssApplied = !this.isCssApplied;
-    (this.isCssApplied) ? document.body.classList.add('custom-body-css') : document.body.classList.remove('custom-body-css');
+    (this.isCssApplied) ? document.body.classList.add('dark-mode') : document.body.classList.remove('dark-mode');
   }
 
   constructor(private ngZone: NgZone, private el: ElementRef, private renderer: Renderer2, private shareService: ShareVariableService) { }
@@ -64,8 +67,16 @@ export class HeaderComponent implements OnInit {
     let op: any;
     this.items.forEach(item => {
       if (item.route == this.sharedData) {
-        (item.route == '/trabajos') ? op = 0 : op = 1;
-        console.log('SELEVG', item.route)
+        // (item.route == '/trabajos') ? op = 0 : op = 1;
+        if (item.route == '/home') {
+          op = 0;
+        }
+        else if(item.route == '/trabajos') {
+          op = 1;
+        }
+        else {
+          op = 2;
+        }
         this.toggleStyles(op);
       }
     })

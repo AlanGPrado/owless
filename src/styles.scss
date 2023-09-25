@@ -5,14 +5,15 @@ body {
 }
 
 /* Estilos modo obscuro */
-.custom-body-css {
+.dark-mode {
   background-color: #202023;
 
   h1,
   h2,
   h3,
   p,
-  li {
+  li,
+  a {
     color: white !important;
   }
 
@@ -71,6 +72,11 @@ body {
 
   #menu-name {
     color: black !important;
+  }
+
+  .redirect:hover {
+    background-color: #e6fffa1b !important;
+    border-radius: 8px;
   }
 }
 
@@ -175,16 +181,26 @@ footer {
   #menu-name {
     display: flex;
     align-items: center;
-
+    width: 100%;
+    height: 100%;
     mat-icon {
       font-size: 23px;
-      padding-right: 3px;
+      padding-right: 5px;
     }
   }
+
+  #menu-name:hover, #menu-name:active {
+    background-color: rgba(0, 0, 0, 0.097);
+    border-radius: 5px;
+  }
+
+  .redirect:hover {
+    background-color: unset !important;
+    border-radius: unset !important;
+  }
+
+  .redirect:active {
+    background-color: #e6fffa !important;
+    border-radius: 8px !important;
+  }
 }
-////////////////////
-.burguer-menu-elements li:first-child {
-  // box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
-  width: 100%;
-}
-///////////////////
