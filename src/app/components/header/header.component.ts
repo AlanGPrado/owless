@@ -1,5 +1,5 @@
-import { Component, ElementRef, NgZone, OnInit, HostListener, Renderer2 } from '@angular/core';
-import { ShareVariableService } from 'src/app/services/share-variable.service';
+import { Component, ElementRef, OnInit, HostListener, Renderer2 } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -8,7 +8,6 @@ import { ShareVariableService } from 'src/app/services/share-variable.service';
 })
 
 export class HeaderComponent implements OnInit {
-  sharedData: any;
   customStyle: string | null = null;
   currentIcon: string = 'dark_mode';
   isCssApplied: boolean = false;
@@ -53,7 +52,7 @@ export class HeaderComponent implements OnInit {
     (this.isCssApplied) ? document.body.classList.add('dark-mode') : document.body.classList.remove('dark-mode');
   }
 
-  constructor(private ngZone: NgZone, private el: ElementRef, private renderer: Renderer2, private shareService: ShareVariableService) { }
+  constructor(private router: Router, private el: ElementRef) { }
 
   onDocumentClick(event: Event) {
     if (!this.el.nativeElement.contains(event.target)) {
@@ -62,12 +61,10 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.sharedData = this.shareService.getSharedData();
-    console.log(this.sharedData);
+
     let op: any;
     this.items.forEach(item => {
-      if (item.route == this.sharedData) {
-        // (item.route == '/trabajos') ? op = 0 : op = 1;
+      if (item.route == this.router.url) {
         if (item.route == '/home') {
           op = 0;
         }
@@ -79,14 +76,14 @@ export class HeaderComponent implements OnInit {
         }
         this.toggleStyles(op);
       }
-    })
+    });
 
     if (this.screenWidth <= 780) {
       this.mobileFlag = true;
     }
     document.addEventListener('click', this.onDocumentClick.bind(this));
+    console.log(this.router.url);
   }
-
 
   ngOnDestroy() {
     document.removeEventListener('click', this.onDocumentClick.bind(this));

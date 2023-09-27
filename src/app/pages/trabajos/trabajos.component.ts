@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { ShareVariableService } from 'src/app/services/share-variable.service';
 
 @Component({
   selector: 'app-trabajos',
@@ -9,14 +7,9 @@ import { ShareVariableService } from 'src/app/services/share-variable.service';
 })
 export class TrabajosComponent implements OnInit {
 
-  constructor(private router: Router, private shareService: ShareVariableService) { }
-
-  sendDataToComponentB() {
-    this.shareService.setSharedData(this.router.url);
-  }
+  constructor() { }
 
   ngOnInit(): void {
-    this.sendDataToComponentB();
   }
 
 }

@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { ShareVariableService } from 'src/app/services/share-variable.service';
 
 @Component({
   selector: 'app-experiencia',
@@ -27,14 +25,9 @@ export class ExperienciaComponent implements OnInit {
     { iconSrc: 'assets/nestjsicon.svg', legend: 'NestJS' },
   ];
 
-  constructor(private router: Router, private shareService: ShareVariableService ) { }
-
-  sendDataToComponentB() {
-    this.shareService.setSharedData(this.router.url);
-  }
+  constructor() { }
 
   ngOnInit(): void {
-    this.sendDataToComponentB();
   }
 
 }
