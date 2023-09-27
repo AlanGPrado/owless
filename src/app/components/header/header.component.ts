@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, HostListener, Renderer2 } from '@angular/core';
 import { Router } from '@angular/router';
+import { ShareVariableService } from 'src/app/services/share-variable.service';
 
 @Component({
   selector: 'app-header',
@@ -50,9 +51,10 @@ export class HeaderComponent implements OnInit {
   toggleBackground() {
     this.isCssApplied = !this.isCssApplied;
     (this.isCssApplied) ? document.body.classList.add('dark-mode') : document.body.classList.remove('dark-mode');
+    this.sharedService.toggleImage();
   }
 
-  constructor(private router: Router, private el: ElementRef) { }
+  constructor(private router: Router, private el: ElementRef, private sharedService: ShareVariableService) { }
 
   onDocumentClick(event: Event) {
     if (!this.el.nativeElement.contains(event.target)) {
