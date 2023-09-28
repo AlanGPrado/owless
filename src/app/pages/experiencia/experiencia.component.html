@@ -4,14 +4,14 @@
     <h3>Herramientas</h3>
     <div class="container-group">
       <span class="tool-group" *ngFor="let tool of herramientas">
-        <img class="tool-icon" [src]="tool.iconSrc" alt="">
+        <img class="tool-icon" [src]="tool.iconSrc" loading="lazy" alt="tools">
         <p class="tool-legend">{{ tool.legend }}</p>
       </span>
     </div>
     <h3>Frameworks</h3>
     <div class="container-group-frameworks">
       <span class="tool-group" *ngFor="let framework of frameworks">
-        <img class="tool-icon" [src]="framework.iconSrc" alt="">
+        <img class="tool-icon" [src]="framework.iconSrc" loading="lazy" alt="frameworks">
         <p class="tool-legend">{{ framework.legend }}</p>
       </span>
     </div>
