@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, HostListener, Renderer2 } from '@angular/core';
+import { Component, ElementRef, OnInit, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { ShareVariableService } from 'src/app/services/share-variable.service';
 
@@ -9,7 +9,7 @@ import { ShareVariableService } from 'src/app/services/share-variable.service';
 })
 
 export class HeaderComponent implements OnInit {
-  currentIcon: string = 'dark_mode';
+  currentIcon: string = '';
   isCssApplied: boolean = false;
   mobileFlag: boolean = false;
   screenWidth: number = window.innerWidth;
@@ -19,8 +19,9 @@ export class HeaderComponent implements OnInit {
     { label: 'Trabajos', route: '/trabajos', isActive: false },
     { label: 'Experiencia', route: '/experiencia', isActive: false }
   ];
-
   showElement = false;
+
+  constructor(private router: Router, private el: ElementRef, private sharedService: ShareVariableService) { }
 
   toggleMenu() {
     this.showElement = !this.showElement;
@@ -45,11 +46,24 @@ export class HeaderComponent implements OnInit {
   }
 
   toggleTheme() {
-    (this.currentIcon === 'dark_mode') ? this.currentIcon = 'light_mode' : this.currentIcon = 'dark_mode';
+    // console.log('Before toggle:', this.isCssApplied);
     this.isCssApplied = !this.isCssApplied;
-    (this.isCssApplied) ? document.body.classList.add('dark-mode') : document.body.classList.remove('dark-mode');
+    // console.log('After toggle:', this.isCssApplied);
+
+    if (this.isCssApplied) {
+      console.log('Adding dark mode');
+      document.body.classList.remove('light-mode');
+      document.body.classList.add('dark-mode');
+      this.currentIcon = 'light_mode';
+    } else {
+      console.log('Adding light mode');
+      document.body.classList.remove('dark-mode');
+      document.body.classList.add('light-mode');
+      this.currentIcon = 'dark_mode';
+    }
     this.sharedService.toggleImage();
   }
+
 
   // toggleIcon() {
   //   (this.currentIcon === 'dark_mode') ? this.currentIcon = 'light_mode' : this.currentIcon = 'dark_mode';
@@ -59,10 +73,7 @@ export class HeaderComponent implements OnInit {
   //   this.isCssApplied = !this.isCssApplied;
   //   (this.isCssApplied) ? document.body.classList.add('dark-mode') : document.body.classList.remove('dark-mode');
   //   this.sharedService.toggleImage();
-  //   console.log("CHINGASATUM")
   // }
-
-  constructor(private router: Router, private el: ElementRef, private sharedService: ShareVariableService) { }
 
   onDocumentClick(event: Event) {
     if (!this.el.nativeElement.contains(event.target)) {
@@ -71,7 +82,6 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
     let op: any;
     this.items.forEach(item => {
       if (item.route == this.router.url) {
@@ -101,6 +111,15 @@ export class HeaderComponent implements OnInit {
         this.imageSrc = 'assets/owless_logo_dark.png';
       }
     });
+
+    if (document.body.classList.contains('light-mode')) {
+      this.currentIcon = 'dark_mode';
+      this.isCssApplied = false;
+    }
+    else if (document.body.classList.contains('dark-mode')) {
+      this.currentIcon = 'light_mode';
+      this.isCssApplied = true;
+    }
   }
 
   ngOnDestroy() {
