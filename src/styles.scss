@@ -7,6 +7,7 @@
 /* Estilos modo obscuro */
 .dark-mode {
   background-color: #202023;
+  transition: background-color 0.2s ease;
 
   h1,
   h2,
