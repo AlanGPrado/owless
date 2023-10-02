@@ -199,3 +199,11 @@ footer {
     border-radius: 5px;
   }
 }
+
+
+@media screen and (max-width: 385px) {
+ .name {
+  font-size: 10vw !important;
+  // text-align: center !important;
+ }
+}
