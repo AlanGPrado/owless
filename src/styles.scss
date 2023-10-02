@@ -198,12 +198,15 @@ footer {
     background-color: rgba(0, 0, 0, 0.097);
     border-radius: 5px;
   }
+
+  .header-title {
+    font-size: 22px !important;
+  }
 }
 
 
 @media screen and (max-width: 385px) {
  .name {
   font-size: 10vw !important;
-  // text-align: center !important;
  }
 }
