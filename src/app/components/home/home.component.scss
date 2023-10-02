@@ -40,15 +40,12 @@ h2 {
   display: flex;
   align-items: center;
   height: 35px;
+  font-family: 'Asap', sans-serif;
+
   mat-icon {
     margin-right: 8px;
     color: #2c7a7b;
   }
-}
-
-.button-redes:hover {
-  background-color: #e6fffa;
-  border-radius: 8px;
 }
 
 .redes {
@@ -56,6 +53,11 @@ h2 {
   color: #2c7a7b;
   font-weight: bold;
   font-size: 15px;
+}
+
+.button-redes:hover {
+  background-color: #e6fffa;
+  border-radius: 8px;
 }
 
 .year {
