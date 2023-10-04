@@ -11,6 +11,7 @@ import { HomepageComponent } from './pages/homepage/homepage.component';
 import { ExperienciaComponent } from './pages/experiencia/experiencia.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ShareVariableService } from './services/share-variable.service';
+import { AnimationComponent } from './components/animation/animation.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +20,8 @@ import { ShareVariableService } from './services/share-variable.service';
     TrabajosComponent,
     HomepageComponent,
     ExperienciaComponent,
-    FooterComponent
+    FooterComponent,
+    AnimationComponent
   ],
   imports: [
     BrowserModule,

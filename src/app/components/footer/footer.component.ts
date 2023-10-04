@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, Renderer2 } from '@angular/core';
 import { ShareVariableService } from 'src/app/services/share-variable.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-footer',
@@ -9,7 +10,7 @@ import { ShareVariableService } from 'src/app/services/share-variable.service';
 export class FooterComponent implements OnInit {
   imageSrc: string = '';
 
-  constructor(private sharedService: ShareVariableService) { }
+  constructor(private sharedService: ShareVariableService, private router: Router, private elRef: ElementRef, private renderer: Renderer2) { }
 
   ngOnInit(): void {
     this.sharedService.showImage$.subscribe((showImage) => {
@@ -19,6 +20,11 @@ export class FooterComponent implements OnInit {
         this.imageSrc = 'assets/github_dark.svg';
       }
     });
+
+    const element = this.elRef.nativeElement.querySelector('#footer');
+    if (element && this.router.url == '/home') {
+      this.renderer.setStyle(element, 'margin-top', '0px');
+    }
   }
 
 }
