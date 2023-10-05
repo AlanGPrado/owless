@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, HostListener, Input, OnInit, ViewChild } from '@angular/core';
 import * as three from 'three';
 import { ShareVariableService } from 'src/app/services/share-variable.service';
 
@@ -10,8 +10,13 @@ import { ShareVariableService } from 'src/app/services/share-variable.service';
 })
 export class AnimationComponent implements OnInit, AfterViewInit {
   hex: number = 0;
+  screenWidth: number = window.innerWidth;
   @ViewChild('canvas')
   private canvasRef!: ElementRef;
+  @HostListener('window:resize', ['$event'])
+  onResize(event: Event): void {
+    this.screenWidth = window.innerWidth;
+  }
 
   // Cube properties
   @Input() public rotationSpeedX: number = 0.01;
@@ -33,7 +38,8 @@ export class AnimationComponent implements OnInit, AfterViewInit {
     return this.canvasRef.nativeElement;
   }
   private loader = new three.TextureLoader();
-  private geometry = new three.BoxGeometry(2, 2, 2);
+
+  private geometry = new three.BoxGeometry(1.5, 1.5, 1.5);
   private material = new three.MeshBasicMaterial({ map: this.loader.load(this.texture) });
   private cube: three.Mesh = new three.Mesh(this.geometry, this.material);
   private renderer!: three.WebGLRenderer
@@ -46,10 +52,8 @@ export class AnimationComponent implements OnInit, AfterViewInit {
           const bodyClassList = document.body.classList;
 
           if (bodyClassList.contains('light-mode')) {
-            // console.log("DOLLY")
             this.hex = 0xf0e7db;
           } else if (bodyClassList.contains('dark-mode')) {
-            // console.log("NEGRA")
             this.hex = 0x202023;
           }
 
@@ -142,7 +146,9 @@ export class AnimationComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-
+    if (this.screenWidth <= 780) {
+      this.geometry = new three.BoxGeometry(2, 2, 2);
+    }
   }
 
 }

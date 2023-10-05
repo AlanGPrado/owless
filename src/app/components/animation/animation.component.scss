@@ -1,0 +1,12 @@
+canvas {
+  height: 300px;
+  width: 100%;
+}
+
+/* MOBILE STYLES */
+@media screen and (max-width: 780px) {
+  canvas {
+    height: 100%;
+    width: 100%;
+  }
+}
