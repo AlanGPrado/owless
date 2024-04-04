@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-experiencia',
@@ -25,7 +25,9 @@ export class ExperienciaComponent implements OnInit {
     { iconSrc: 'assets/nestjsicon.svg', legend: 'NestJS' },
   ];
 
-  constructor() { }
+  constructor(private el: ElementRef) {
+    this.el.nativeElement.ownerDocument.body.scrollTop = 0;
+  }
 
   ngOnInit(): void {
   }

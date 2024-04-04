@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-trabajos',
@@ -7,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TrabajosComponent implements OnInit {
 
-  constructor() { }
+  constructor(private el: ElementRef) {
+    this.el.nativeElement.ownerDocument.body.scrollTop = 0;
+  }
 
   ngOnInit(): void {
   }
