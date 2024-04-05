@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class FooterComponent implements OnInit {
   imageSrc: string = '';
+  currentYear = new Date().getFullYear();
 
   constructor(private sharedService: ShareVariableService, private router: Router, private elRef: ElementRef, private renderer: Renderer2) { }
 
